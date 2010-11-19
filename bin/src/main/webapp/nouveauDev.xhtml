@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j">
+    
+    <body>
+        
+        <ui:composition template="./templateCore.xhtml">
+            
+            <ui:define name="content">
+               <rich:panel style="width:100%; height:350px" >
+                    <h:outputText value="Ajouter un Développement"  styleClass="title3" />
+              <rich:separator width="100%" height="5" />
+              <rich:spacer height="10px"/>
+                <f:view>
+                    
+                       
+                        <h:panelGrid columns="2" columnClasses="top1,top2" cellpadding="10" >
+                           <h:form>
+                           <h:panelGrid columns="2"  >
+                               
+                                <h:outputText value ="nom du développement" style="width: 30px"/>
+                                <h:inputText  value="#{dev.monDev.nomDev}"/>
+                                <h:outputText value="Description"/>
+                                <h:inputTextarea cols="50" rows="4" value="#{dev.monDev.description}"/>
+                                <rich:spacer/>
+                                <h:commandButton value="Valider"  action="#{dev.enregistrer}"/>
+                            </h:panelGrid>
+                       </h:form>
+                        <h:form>
+                            <h:panelGrid columns="2" >
+
+                                <rich:fileUpload fileUploadListener="#{fup.listener}"
+                                                 maxFilesQuantity="#{fup.uploadsAvailable}"
+                                                 id="upload"
+                                                 immediateUpload="#{fup.autoUpload}">
+                                               
+                                    <a4j:support event="onuploadcomplete" reRender="info" />
+                                </rich:fileUpload>
+
+                        </h:panelGrid>
+                        </h:form>
+                        </h:panelGrid>
+                    
+                </f:view>
+                 </rich:panel>
+            </ui:define>
+
+        </ui:composition>
+        
+    </body>
+</html>

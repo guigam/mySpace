@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:rich="http://richfaces.org/rich">
+    <head>
+        <title>Connexion</title>
+    </head>
+    <body>
+       
+
+
+        
+        <h:form>
+            
+        <center>
+            <h:panelGrid columns="2" style="margin-top: 15px" columnClasses="top1,top2" cellspacing="20">
+                <h:graphicImage value="/images/login.png" />
+                <h:panelGrid columns="2" >
+                    <h:outputText value="Utilisateur"/>
+                    <h:inputText value="#{login.monUser.username}" rendered="true" id="name" />
+                    
+                    <rich:spacer height="3px"/>
+                    <rich:spacer height="3px"/>
+                    <h:outputText value="Mot de Passe"/>
+                   
+                    <h:inputSecret value="#{login.monUser.password}" required="true"/>
+                    <rich:spacer height="3px"/>
+                    <rich:spacer height="3px"/>
+                   
+                    <h:commandButton value="Valider" action="#{login.connexion}"/>
+                </h:panelGrid>
+                
+               
+
+            </h:panelGrid>
+
+           
+            
+           
+        </center>
+        </h:form>
+       
+
+    </body>
+</html>
+

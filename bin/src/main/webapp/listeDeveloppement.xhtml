@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://richfaces.org/a4j">
+    
+    <body>
+        
+        <ui:composition template="./templateCore.xhtml">
+            
+            <ui:define name="content">
+                <rich:panel style="width:100%" >
+                    <h:panelGrid columns="3">
+                        <h:outputText value="Liste des Développements "  styleClass="title3" />
+                        <rich:spacer width="5px"/>
+                        <h:form>
+                            <h:commandLink value="Nouveau Développement" styleClass="title2" action="#{redirectController.redirect}" >
+
+                                <f:param name="outcome" value="nvDev" />
+                            </h:commandLink>
+                        </h:form>
+                    </h:panelGrid>
+                    <rich:separator width="100%" height="5" />
+                    <rich:spacer height="10px"/>
+
+                    <h:form>
+                    <h:panelGrid columns="2">
+                        <rich:comboBox value="#{dev.letat}" id="combo" valueChangeListener="#{dev.comboChange}"  >
+                            <f:selectItem itemValue="Tous" itemLabel="Tous"  />
+                            <f:selectItem itemValue="en Cours" itemLabel="en Cours" />
+                            <f:selectItem itemValue="Termine" itemLabel="Terminé" />
+                            <a4j:support  event="onselect" reRender="tab" />
+                        </rich:comboBox>
+          
+                     </h:panelGrid>
+                        <rich:spacer height="5px"/>
+                    
+
+
+                 
+                        <rich:dataTable value="#{dev.mesDev}" var="v" binding="#{dev.datatable}" width="100%"  id="tab" rowKeyVar="row" rows="5" >
+                        <rich:column width="17%">
+                            <f:facet  name ="header" >
+                                <h:outputText value="nom du développement"/>
+                            </f:facet>
+                           
+                                <h:commandLink value="#{v.nomDev}" style="font-size: 12px;" action="#{dev.afficheDev}"/>
+                           
+                        </rich:column>
+                        <rich:column width="70%">
+                            <f:facet  name ="header" >
+                                <h:outputText value="Détails"/>
+                            </f:facet>
+                            <h:panelGrid columns="2">
+                                <h:outputText value="Version : " style="font-weight: bold; width :auto"/>
+                                <h:outputText value="#{v.laVersion.laVersion}"/>
+                                <h:outputText value="Date : " style="font-weight: bold; width :auto"/>
+                                <h:outputText value="#{v.dateDev}" />
+                                <h:outputText value="Description : " style="font-weight: bold; width :auto"/>
+                                <h:outputText value="#{v.description}" />
+                                <h:outputText value="Etat : " style="font-weight: bold; width :auto"/>
+                                <h:outputText value="#{v.etat}"/>
+                                
+
+                            </h:panelGrid>
+                           
+                        </rich:column>
+                        <rich:column width="3%">
+                            <f:facet  name ="header" >
+                                <h:outputText value="--"/>
+                            </f:facet>
+                            <center>
+                                <h:commandButton image="/icons/supp.png" id="d"/>
+                                <rich:toolTip value="supprimer" for="d"/>
+                            </center>
+                            
+                        </rich:column>
+                       
+                    </rich:dataTable>
+                    </h:form>
+                </rich:panel>
+
+            </ui:define>
+
+        </ui:composition>
+        
+    </body>
+</html>

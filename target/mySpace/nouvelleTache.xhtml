@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:h="http://java.sun.com/jsf/html">
+    
+    <body>
+        
+        <ui:composition template="./templateCore.xhtml">
+            
+
+
+            <ui:define name="content">
+                <h:form>
+                <rich:panel style="width:100%;" >
+                    
+                        <h:outputText value="Nouvelles Tâche :  "  styleClass="title3" />
+                        <rich:spacer width="5px"/>
+                        <rich:separator width="100%" height="5" />
+                        <rich:spacer height="10px" />
+
+
+                        <h:panelGrid columns="2">
+                            <h:outputText value="Nom de la tâche"/>
+                            <h:inputText value="#{gsTaches.matache.nomTache}"/>
+                             <h:outputText value="Description"/>
+                             <h:inputTextarea  rows="6" cols="70" value="#{gsTaches.matache.description}"/>
+                             <rich:spacer />
+                             <h:commandButton value="Valider" action="#{gsTaches.enregistrerTAches}"/>
+
+                        </h:panelGrid>
+
+
+                </rich:panel>
+            </h:form>
+
+            </ui:define>
+
+        </ui:composition>
+        
+    </body>
+</html>
