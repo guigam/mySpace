@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:h="http://java.sun.com/jsf/html">
+    
+    <body>
+        
+        <ui:composition template="./templateCore.xhtml">
+            
+            <ui:define name="content">
+                 <rich:panel style="width:100%; height:350px" >
+                    <h:outputText value="Accueil"  styleClass="title3" />
+              <rich:separator width="100%" height="5" />
+              <rich:spacer height="30px" width="20px"/>
+              
+              <h:outputText  value="Messages"  styleClass="title1" />
+              <rich:spacer width="20px"/>
+              <rich:panel  style="background-color: #fdf3f3">
+                  <h:panelGrid columns="2" cellspacing="10px">
+                      <h:graphicImage value="/icons/arrowright.png" />
+              <h:outputText style="margin-left: 10px; font-size:12px " value="Bonjour, je mettrai au plus tard lundi le code source pour le telecharger"/>
+              <h:graphicImage value="/icons/arrowright.png" />
+              <p> La version que tu as telechargé est bonne sauf qu'il y a plusieurs type de decompression tu peux utiliser ce logiciel <a href="/mySpace/lesFichiers/winzip145fr.exe">ici</a> pour decompresser, sinon j'ai mis une autre version avec la decompression que tu utilise</p>
+<!--              <h:outputText style="margin-left: 10px" value="Le site n'est pas opérationnelle a 100%, je mettrai a jour l'application dès je trouverai du temps."/>
+              <h:graphicImage value="/icons/arrowright.png" />
+              <h:outputText style="margin-left: 10px" value="si quelqu'un souhaite ajouter une fonctionnalité ca sera avec plaisir "/>
+              <rich:spacer/>-->
+              <h:outputText style="margin-left: 10px" value="Merci."/>
+              
+              </h:panelGrid>
+              </rich:panel>
+                 </rich:panel>
+            </ui:define>
+
+        </ui:composition>
+        
+    </body>
+</html>

@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://richfaces.org/a4j">
+    
+    <body>
+        
+        <ui:composition template="./templateCore.xhtml">
+           
+            <ui:define name="content">
+                
+                <rich:panel style="width:100%;" >
+                    <h:form>
+                    <h:panelGrid columns="3" >
+                        <h:outputText value="Liste des Tâches :  "  styleClass="title3" />
+                       
+                        
+                            <h:commandLink value="Nouvelle tâche" styleClass="title2" action="#{redirectController.redirect}" >
+
+                                <f:param name="outcome" value="nvTache" />
+                            </h:commandLink>
+                        
+                    </h:panelGrid>
+                        <rich:separator width="100%" height="5" />
+                        <rich:spacer height="10px"/>
+                        
+                       
+                        <rich:comboBox value="#{gsTaches.type}" id="combo" valueChangeListener="#{gsTaches.comboChange}">
+                            <f:selectItem  itemValue="Tous" />
+                            <f:selectItem  itemValue="Terminé" />
+                            <f:selectItem itemValue="En Cours" />
+                            <a4j:support event="onselect" reRender="tab"/>
+                        </rich:comboBox>
+                        <rich:spacer height="10px"/>
+
+                        
+                        <rich:dataTable value="#{gsTaches.listDesTaches}" var="v" binding="#{gsTaches.dataTable}" width="100%" id="tab" >
+                                <rich:column width="5%" sortBy="#{v.madate}"  filterEvent="onkeyup" >
+                                    <f:facet  name ="header" >
+                                        <h:outputText value="Date"/>
+                                    </f:facet>
+                                    <h:outputText value="#{v.madate}"/>
+                                </rich:column>
+                                <rich:column width="25%" filterBy="#{v.nomTache}"  filterEvent="onkeyup" >
+                            <f:facet  name ="header" >
+                                <h:outputText value="Tache"/>
+                            </f:facet>
+                            <h:outputText value="#{v.nomTache}"/>
+                        </rich:column>
+                            <rich:column width="50%" >
+                                <f:facet  name ="header" >
+                                    <h:outputText value="Description"/>
+                                </f:facet>
+                                <h:outputText value="#{v.description}"/>
+                            </rich:column>
+                            <rich:column width="10%" filterBy="#{v.etat}"  filterEvent="onkeyup">
+                                <f:facet  name ="header" >
+                                    <h:outputText value="terminé"/>
+                                </f:facet>
+                                <center><h:selectBooleanCheckbox  value="#{v.etat}" /></center>
+                                
+                            </rich:column>
+                        
+                        <rich:column width="15%">
+                            <f:facet  name ="header" >
+                                <h:outputText value="Action"/>
+                            </f:facet>
+                            <center>
+                                <h:panelGrid columns="5">
+                                    <h:commandButton image="/icons/supp.png" id="d" action="#{gsTaches.supprimerUneTache}"/>
+                                <rich:toolTip value="supprimer" for="d"/>
+                                <rich:spacer width="5"/>
+                                <h:commandButton image="/icons/chat.png" style="width: 25px" id="c"  >
+                                     <rich:componentControl for="tach" attachTo="c" operation="show" event="onclick"/>
+                                    </h:commandButton>
+                                    <rich:toolTip value="commentaires" for="c"/>
+                                </h:panelGrid>
+                                </center>
+                            </rich:column>
+                            
+                     </rich:dataTable>
+
+                </h:form>
+                <h:form>
+
+
+
+                    <rich:modalPanel id="tach" autosized="false" resizeable="true" style="width: 100%" >
+                        
+                            <rich:panel style="width: 100%">
+                                <h:commandLink value="ferme"/>
+                                <rich:dataTable value="#{commenttache.lesCommentaires}" var="c" width="100%" >
+                                    <rich:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="date"/>
+                                        </f:facet>
+                                        <h:outputText value="#{c.date}"/>
+                                    </rich:column>
+                                    <rich:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Utilisateur"/>
+                                        </f:facet>
+                                        <h:outputText value="#{c.leUser.nomPrenom}"/>
+                                    </rich:column>
+                                    <rich:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="commentaire"/>
+                                        </f:facet>
+                                        <h:outputText value="#{c.comments}"/>
+                                    </rich:column>
+
+                                </rich:dataTable>
+
+                            </rich:panel>
+
+                            <h:commandLink value="Ajoueter un commentaire" />
+                        
+                    </rich:modalPanel>
+                </h:form>
+                </rich:panel>
+            
+            </ui:define>
+
+        </ui:composition>
+        
+    </body>
+</html>

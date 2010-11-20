@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:f="http://java.sun.com/jsf/core">
+    
+ <head>
+              
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+            <style>
+                .top {
+                    vertical-align:top;
+                   
+                }
+
+                .top1 {
+                    vertical-align:top;
+                    width:20%;
+                }
+                .top2 {
+                    width: 80%;
+                    vertical-align:top;
+                }
+                .title1{
+                    font-size:11pt;
+                    font-weight:bold
+                }
+                .title2{
+                    font-size:9pt;
+                    font-weight:bold;
+                }
+                .title3 {
+                    font-size:17pt;
+                    font-weight:bold;
+                }
+                .title4 {
+                    font-size:12pt;
+                    font-weight:bold;
+                }
+                .header {
+                width:100%;
+                background-image:url('images/logo.png');
+                background-repeat:no-repeat;
+
+                }
+                                  .tooltip {
+            background-color:#{richSkin.generalBackgroundColor};
+            border-width:3px;
+            padding:10px;
+        }
+        .tooltip-text {
+            width:350px;
+            height:80px;
+            cursor:arrow;
+            border-width:2px;
+            text-align:center;
+            display: table-cell;
+            vertical-align: middle;
+        }
+        .tooltipData {
+            font-weight: bold;
+        }
+            </style>
+ </head>
+    
+    <body class="header"  style="margin:0;">
+        <h:graphicImage url="/images/banner.png" height="80" width="100%"/>
+        
+
+            <h:panelGrid columns="2" headerClass="rich-toolbar" width="100%">
+
+
+		<f:facet name="header">
+			<rich:toolBar>
+                                     <h:commandButton image="/icons/house.png" action="#{redirect.redirect}" >
+                                        <f:param name="outcome" value="conn" />
+                                    </h:commandButton>
+                            <h:outputText style="color:white;font-size:8pt" value="GUIGA MEHDI : mySpace " />
+                        	<rich:toolBarGroup  location="right">
+                                    
+                                    <h:outputText value="Utilisateur: #{login.monUser.nomPrenom}" style="font-weight:bold;font-size:10pt; color:yellow" />
+                                    
+
+                                    <h:form>
+                                        <h:commandLink style="white-space:nowrap; color:white " value="fermer la session" action="#{login.logout}" />
+                                    </h:form>
+                                </rich:toolBarGroup>
+
+			</rich:toolBar>
+		</f:facet>
+              </h:panelGrid>
+                     <h:panelGrid cellspacing="5" columns="2" columnClasses="top1,top2" width="100%"  >
+
+                           <h:panelGrid >
+
+
+		<rich:panelMenu >
+
+                    <rich:panelMenuGroup label="Menu" expanded="true"  >
+
+                        
+                             <rich:panelMenuItem label="Dernière Version"   action="#{redirect.redirect}" >
+                                <f:param name="outcome" value="derniere" />
+                            </rich:panelMenuItem>
+
+                            <rich:panelMenuItem label="Liste des versions"   action="#{redirect.redirect}" >
+                                <f:param name="outcome" value="list" />
+                            </rich:panelMenuItem>                        
+
+                            <rich:panelMenuItem label="Liste des fichiers"   action="#{redirect.redirect}" >
+                                <f:param name="outcome" value="fiche" />
+                            </rich:panelMenuItem>
+                            
+
+                            <rich:panelMenuItem label="Liste des tâches"   action="#{redirect.redirect}" >
+                                <f:param name="outcome" value="taches" />
+                            </rich:panelMenuItem>
+                       
+                        </rich:panelMenuGroup>
+
+                </rich:panelMenu>
+                               <center><rich:spacer height="10px"/>
+                                   <h:graphicImage value="/images/socodevi_01fr.gif" id="d" style="width: 100%"/></center>
+               </h:panelGrid>
+                    
+
+
+                      <h:panelGroup style="width:100%;">
+                          
+                <ui:insert name="content"></ui:insert>
+                      </h:panelGroup>
+
+
+        </h:panelGrid>
+        </body>
+
+    
+</html>

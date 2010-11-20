@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!-- =========== FULL CONFIGURATION FILE ================================== -->
+
+<faces-config version="2.0"
+    xmlns="http://java.sun.com/xml/ns/javaee" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+    <managed-bean>
+        <managed-bean-name> redirect</managed-bean-name>
+        <managed-bean-class>service.RedirectController</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+     <managed-bean>
+        <managed-bean-name>login</managed-bean-name>
+        <managed-bean-class>service.Login</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+         <managed-bean>
+        <managed-bean-name>gestionVersion</managed-bean-name>
+        <managed-bean-class>service.GestionVersion</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+
+          <managed-bean>
+        <managed-bean-name>fup</managed-bean-name>
+        <managed-bean-class>service.FileUploadBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>gsTaches</managed-bean-name>
+        <managed-bean-class>service.gestionTache</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>fiche</managed-bean-name>
+        <managed-bean-class>service.gestionFichier</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>last</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+       <navigation-rule>
+        <navigation-case>
+            <from-outcome>conn</from-outcome>
+            <to-view-id>/accueil.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+       <navigation-rule>
+        <navigation-case>
+            <from-outcome>test</from-outcome>
+            <to-view-id>/versions/1.zip</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+       <navigation-rule>
+        <navigation-case>
+            <from-outcome>list</from-outcome>
+            <to-view-id>/ListVersions.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>derniere</from-outcome>
+            <to-view-id>/derniereVersion.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>fiche</from-outcome>
+            <to-view-id>/listFichiers.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>nvfiche</from-outcome>
+            <to-view-id>/formulaireFichier.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>nvTache</from-outcome>
+            <to-view-id>/nouvelleTache.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>save</from-outcome>
+            <to-view-id>/listFichiers.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>taches</from-outcome>
+            <to-view-id>/listTaches.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+       
+     
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>accueil</from-outcome>
+            <to-view-id>/login.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+
+
+</faces-config>

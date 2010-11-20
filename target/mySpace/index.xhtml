@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:rich="http://richfaces.org/rich">
+    <head>
+        <title>Facelet Title</title>
+    </head>
+    <body>
+        Hello from Facelets
+        <h:form>
+        <h:commandButton value="telecharger" action="#{redirectController.redirect}">
+            <f:param name="outcome" value="last" />
+        </h:commandButton>
+         </h:form>
+        <a href="versions/1.zip">Download</a>
+        <rich:panel />
+        <f:view>
+            <h:form>
+                <h1><h:outputText value="List"/></h1>
+                <h:dataTable value="#{gestionVersion.lesVersions}" var="item">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="SerialVersionUID"/>
+                        </f:facet>
+                        <h:outputText value="#{item.serialVersionUID}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Id"/>
+                        </f:facet>
+                        <h:outputText value="#{item.id}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="LaVersion"/>
+                        </f:facet>
+                        <h:outputText value="#{item.laVersion}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="DateVersion"/>
+                        </f:facet>
+                        <h:outputText value="#{item.dateVersion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Description"/>
+                        </f:facet>
+                        <h:outputText value="#{item.description}"/>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </f:view>
+
+
+    </body>
+</html>
+

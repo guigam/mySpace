@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    
+    <body>
+        
+        <ui:composition template="./templateCore.xhtml">
+            
+            <ui:define name="content">
+                              <rich:panel style="width:100%; " >
+                    <h:outputText value="Liste des versions "  styleClass="title3" />
+              <rich:separator width="100%" height="5" />
+              <rich:spacer height="10px"/>
+              <rich:dataTable value="#{gestionVersion.listDesVersions()}" var="v" binding="#{gestionVersion.dataTable}" width="100%" >
+              <rich:column width="10%">
+                      <f:facet  name ="header" >
+                          <h:outputText value="Date"/>
+                      </f:facet>
+                      <h:outputText value="#{v.dateVersion}"/>
+                  </rich:column>
+              <rich:column width="23%">
+                      <f:facet  name ="header" >
+                          <h:outputText value="nom de la version"/>
+                      </f:facet>
+                      <h:outputText value="#{v.laVersion}"/>
+                  </rich:column>
+              <rich:column width="60%">
+                      <f:facet  name ="header" >
+                          <h:outputText value="Description"/>
+                      </f:facet>
+                      <h:outputText value="#{v.description}"/>
+                  </rich:column>
+
+              <rich:column width="5%">
+                  <f:facet  name ="header" >
+                      <h:outputText value="--"/>
+                  </f:facet>
+                  <center>
+                      <a href="#{v.chemin}" id="t" > Telecharger</a>
+                      
+                  </center>
+              </rich:column>
+              <rich:column width="2%">
+                  <f:facet  name ="header" >
+                      <h:outputText value="--"/>
+                  </f:facet>
+                  <center>
+                      <h:commandButton image="/icons/chat.png" style="width: 25px" id="c" action="#{comment.listDesCommentaires()}" >
+                          <rich:componentControl for="com" attachTo="c" operation="show" event="onclick"/>
+                      </h:commandButton>
+                      <rich:toolTip value="commentaires" for="c"/>
+
+                  </center>
+              </rich:column>
+              </rich:dataTable>
+            
+                  
+            
+
+
+              <rich:modalPanel id="com" autosized="false" resizeable="true" style="width: 100%" >
+                  <h:form>
+                      <rich:panel style="width: 100%">
+                      <h:commandLink value="ferme"/>
+                      <rich:dataTable value="#{comment.lesCommentaires}" var="c" width="100%" >
+                          <rich:column>
+                              <f:facet name="header">
+                                  <h:outputText value="date"/>
+                              </f:facet>
+                              <h:outputText value="#{c.date}"/>
+                          </rich:column>
+                          <rich:column>
+                              <f:facet name="header">
+                                  <h:outputText value="Utilisateur"/>
+                              </f:facet>
+                              <h:outputText value="#{c.leUser.nomPrenom}"/>
+                            </rich:column>
+                          <rich:column>
+                              <f:facet name="header">
+                                  <h:outputText value="commentaire"/>
+                              </f:facet>
+                              <h:outputText value="#{c.comments}"/>
+                            </rich:column>
+
+                      </rich:dataTable>
+
+                  </rich:panel>
+
+                      <h:commandLink value="Ajoueter un commentaire" />
+              </h:form>
+              </rich:modalPanel>
+
+
+             </rich:panel>
+            </ui:define>
+
+        </ui:composition>
+        
+    </body>
+</html>
