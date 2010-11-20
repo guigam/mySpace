@@ -8,13 +8,18 @@
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
     <managed-bean>
         <managed-bean-name> redirect</managed-bean-name>
-        <managed-bean-class>service. RedirectController</managed-bean-class>
-        <managed-bean-scope>session</managed-bean-scope>
+        <managed-bean-class>service.RedirectController</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
      <managed-bean>
         <managed-bean-name>login</managed-bean-name>
         <managed-bean-class>service.Login</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+         <managed-bean>
+        <managed-bean-name>gestionVersion</managed-bean-name>
+        <managed-bean-class>service.GestionVersion</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
 
           <managed-bean>
@@ -26,7 +31,13 @@
     <managed-bean>
         <managed-bean-name>gsTaches</managed-bean-name>
         <managed-bean-class>service.gestionTache</managed-bean-class>
-        <managed-bean-scope>session</managed-bean-scope>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>fiche</managed-bean-name>
+        <managed-bean-class>service.gestionFichier</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
     <navigation-rule>
         <navigation-case>

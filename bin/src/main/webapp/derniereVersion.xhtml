@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    
+    <body>
+        
+        <ui:composition template="./templateCore.xhtml">
+            
+            <ui:define name="content">
+                <rich:panel style="width:100%; height:350px" >
+                    <h:outputText value="La Derniere Version "  styleClass="title3" />
+              <rich:separator width="100%" height="5" />
+              <rich:spacer width="20px" />
+              
+              <h:form>
+                  <rich:spacer height="20px" />
+                  
+                  <h:panelGrid columns="2">
+                      <h:outputText value="Nom de la version: " styleClass="title2"/>
+                      <h:outputText value="#{gestionVersion.laversion.laVersion}"/>
+                      <h:outputText value="Date: " styleClass="title2"/>
+                      <h:outputText value="#{gestionVersion.laversion.dateVersion}"/>
+                      <h:outputText value="Description: " styleClass="title2"/>
+                      <h:outputText value="#{gestionVersion.laversion.description}"/>                 
+                      
+                 </h:panelGrid>
+                  <rich:panel style="background-color: white">
+                  <h:panelGrid>
+                  <h:outputText value="Information " styleClass="title2"/>
+                      <h:outputText value="#{gestionVersion.laversion.informations}" style="width: 50%"/>
+                 </h:panelGrid>
+                 </rich:panel>
+                   <a href="#{gestionVersion.laversion.chemin}">telecharger la derniere version</a>
+                     
+                
+                     <center><h:graphicImage value="/images/SHOEBOX.gif" width="150px"/></center>
+
+                  
+               </h:form>
+                </rich:panel>
+
+            </ui:define>
+
+        </ui:composition>
+        
+    </body>
+</html>

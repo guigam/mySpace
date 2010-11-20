@@ -1052,6 +1052,7 @@
           <string>listFichiers.xhtml</string>
           <string>ListVersions.xhtml</string>
           <string>WEB-INF/faces-config.xml</string>
+          <string>WEB-INF/.faces-config.xml.jsfdia</string>
           <string>WEB-INF/sun-web.xml</string>
           <string>WEB-INF/web.xml</string>
           <string>WEB-INF/classes/service/Login.class</string>
