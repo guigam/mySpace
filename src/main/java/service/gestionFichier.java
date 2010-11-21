@@ -49,7 +49,7 @@ public class gestionFichier {
     
     
     
-    public List<fichier> listDesFichiers(){
+    public List<fichier> getlistDesFichiers(){
           Query query = em.createQuery("select f from fichier f ");
           lesFichiers = query.getResultList();
         return lesFichiers;

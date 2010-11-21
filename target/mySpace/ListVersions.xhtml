@@ -15,7 +15,7 @@
                     <h:outputText value="Liste des versions "  styleClass="title3" />
               <rich:separator width="100%" height="5" />
               <rich:spacer height="10px"/>
-              <rich:dataTable value="#{gestionVersion.listDesVersions()}" var="v" binding="#{gestionVersion.dataTable}" width="100%" >
+              <rich:dataTable value="#{gestionVersion.listDesVersions}" var="v" binding="#{gestionVersion.dataTable}" width="100%" >
               <rich:column width="10%">
                       <f:facet  name ="header" >
                           <h:outputText value="Date"/>
@@ -49,7 +49,7 @@
                       <h:outputText value="--"/>
                   </f:facet>
                   <center>
-                      <h:commandButton image="/icons/chat.png" style="width: 25px" id="c" action="#{comment.listDesCommentaires()}" >
+                      <h:commandButton image="/icons/chat.png" style="width: 25px" id="c" action="#{comment.listDesCommentaires}" >
                           <rich:componentControl for="com" attachTo="c" operation="show" event="onclick"/>
                       </h:commandButton>
                       <rich:toolTip value="commentaires" for="c"/>

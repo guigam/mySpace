@@ -24,8 +24,7 @@ import org.richfaces.component.UIDataTable;
  *
  * @author guiga
  */
-@ManagedBean(name="comment")
-@RequestScoped
+
 public class GestionComment {
     private List<commentaires> lesCommentaires = new LinkedList<commentaires>();
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("manager");

@@ -11,6 +11,11 @@
         <managed-bean-class>service.RedirectController</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+        <managed-bean>
+        <managed-bean-name> comment</managed-bean-name>
+        <managed-bean-class>service.GestionComment</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
      <managed-bean>
         <managed-bean-name>login</managed-bean-name>
         <managed-bean-class>service.Login</managed-bean-class>

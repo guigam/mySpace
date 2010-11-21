@@ -32,7 +32,7 @@ public class GestionVersion {
     public GestionVersion() {
     }
 
-    public List<version> listDesVersions(){
+    public List<version> getlistDesVersions(){
         Query query = getEm().createQuery("select v from version v");
         for(version v : (List<version>)query.getResultList()){
             getLesVersions().add(v);
