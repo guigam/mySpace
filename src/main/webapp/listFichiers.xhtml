@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://richfaces.org/a4j">
+    
+    <body>
+        
+        <ui:composition template="./templateCore.xhtml">
+            
+            <ui:define name="content">
+<h:form>
+                <rich:panel style="width:100%; " >
+                    <h:panelGrid columns="3">
+                    <h:outputText value="Liste des Fichiers "  styleClass="title3" />
+                    <rich:spacer width="5px"/>
+                    
+                    <h:commandLink value="Ajouter un fichier" styleClass="title2" action="#{redirectController.redirect}" >
+                                        <f:param name="outcome" value="nvfiche" />
+                    </h:commandLink>
+                    
+                    </h:panelGrid>
+                    <rich:separator width="100%" height="5" />
+                    <rich:spacer height="10px"/>
+                    <rich:dataTable value="#{fiche.listDesFichiers}" var="v" binding="#{fiche.dataTable}" width="100%" >
+                        <rich:column width="10%" >
+                            <f:facet  name ="header" >
+                                <h:outputText value="Date"/>
+                            </f:facet>
+                            <h:outputText value="#{v.datefichier}"/>
+                        </rich:column>
+                        <rich:column width="22%" filterBy="#{v.nomFichier}" filterEvent="onkeyup" >
+                            <f:facet  name ="header" >
+                                <h:outputText value="Nom du fichier"/>
+                            </f:facet>
+                            <h:outputText value="#{v.nomFichier}"/>
+                        </rich:column>
+                        <rich:column width="60%" filterBy="#{v.description}" filterEvent="onkeyup">
+                            <f:facet  name ="header" >
+                                <h:outputText value="Description"/>
+                            </f:facet>
+                            <h:outputText value="#{v.description}"/>
+                        </rich:column>
+                        <rich:column width="8%">
+                            <f:facet  name ="header" >
+                                <h:outputText value="--"/>
+                            </f:facet>
+                            <center>                    
+                                        <a href="#{v.chemin}"  >
+                                           Telecharger
+                                        </a>           
+                               
+                            </center>
+                        </rich:column>
+                        <rich:column width="8%">
+                            <f:facet  name ="header" >
+                                <h:outputText value="--"/>
+                            </f:facet>
+                            <center>
+                                <h:commandButton image="/icons/supp.png" id="d" action="#{fiche.supprimeFichier}"/>
+                                <rich:toolTip value="supprimer" for="d"/>
+                             </center>
+                        </rich:column>
+                    </rich:dataTable>
+                </rich:panel>
+</h:form>
+            </ui:define>
+
+        </ui:composition>
+        
+    </body>
+</html>

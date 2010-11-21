@@ -1,0 +1,176 @@
+/*
+Navicat MySQL Data Transfer
+
+Source Server         : local
+Source Server Version : 50141
+Source Host           : localhost:3306
+Source Database       : space
+
+Target Server Type    : MYSQL
+Target Server Version : 50141
+File Encoding         : 65001
+
+Date: 2010-10-07 12:43:58
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+-- ----------------------------
+-- Table structure for `commentaires`
+-- ----------------------------
+DROP TABLE IF EXISTS `commentaires`;
+CREATE TABLE `commentaires` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `comments` varchar(255) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `laVersion_id` bigint(20) DEFAULT NULL,
+  `leUser_id` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK2F8390791E7044E` (`leUser_id`),
+  KEY `FK2F8390799222A8C2` (`laVersion_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of commentaires
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `commentairesTache`
+-- ----------------------------
+DROP TABLE IF EXISTS `commentairesTache`;
+CREATE TABLE `commentairesTache` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `comments` varchar(255) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `leUser_id` decimal(19,2) DEFAULT NULL,
+  `matache_id` decimal(19,2) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of commentairesTache
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `developpement`
+-- ----------------------------
+DROP TABLE IF EXISTS `developpement`;
+CREATE TABLE `developpement` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `dateDev` date DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `etat` varchar(255) DEFAULT NULL,
+  `nomDev` varchar(255) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `laVersion_id` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKB7C525709222A8C2` (`laVersion_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of developpement
+-- ----------------------------
+INSERT INTO `developpement` VALUES ('14', '2010-09-04', 'coorections des chartes de comptes, les rapports et le module resultat ', 'Termine', 'bugzilla 06/10/2010', 'bug', '1');
+INSERT INTO `developpement` VALUES ('15', '2010-09-04', 'developpement du compte compensation et affichage des dettes', 'en Cours', 'devzilla 01', 'developpement ', '1');
+INSERT INTO `developpement` VALUES ('20', '2010-09-19', 'Corrections generalles suite a la version \"test -1.0', 'en Cours', 'bugzilla 19/10/2010', 'bug', '1');
+
+-- ----------------------------
+-- Table structure for `fichier`
+-- ----------------------------
+DROP TABLE IF EXISTS `fichier`;
+CREATE TABLE `fichier` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `Description` varchar(255) DEFAULT NULL,
+  `chemin` varchar(255) DEFAULT NULL,
+  `datefichier` date DEFAULT NULL,
+  `nomFichier` varchar(255) DEFAULT NULL,
+  `devSoco_id` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKCC8C696EF22EB540` (`devSoco_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of fichier
+-- ----------------------------
+INSERT INTO `fichier` VALUES ('1', 'fichier de configuration ', '/mySpace/lesFichiers/produit.odt', '2010-05-11', 'charger et produit', null);
+INSERT INTO `fichier` VALUES ('2', 'PROBLÈME AVEC LA NOUVELLE VERSION DE SHOEBOX', '/mySpace/lesFichiers/fichie1.doc', '2010-09-01', 'fichier 1', '20');
+INSERT INTO `fichier` VALUES ('3', 'Logo 25 ans socodevi.gif', '/mySpace/lesFichiers/soco.gif', '2010-09-06', 'socodevi gif', '14');
+INSERT INTO `fichier` VALUES ('8', 'Logo 25 ans socodevi.jpg', '/mySpace/lesFichiers/soco.jpg', '2010-09-06', 'socodevi jpg', '14');
+INSERT INTO `fichier` VALUES ('9', 'le logo de SHOEBOX jpg', '/mySpace/lesFichiers/shoebox.jpg', '2010-09-06', 'shoebox jpg', '14');
+INSERT INTO `fichier` VALUES ('10', 'logo de SHOEBOX gif', '/mySpace/lesFichiers/shoebox.gif', '2010-09-06', 'shoebox gif', '14');
+
+-- ----------------------------
+-- Table structure for `taches`
+-- ----------------------------
+DROP TABLE IF EXISTS `taches`;
+CREATE TABLE `taches` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `Description` varchar(255) DEFAULT NULL,
+  `nomTache` varchar(255) DEFAULT NULL,
+  `etat` bit(1) DEFAULT NULL,
+  `leDev_id` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKCB77A3C075CA41` (`leDev_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of taches
+-- ----------------------------
+INSERT INTO `taches` VALUES ('4', 'corriger les liens des rfrences des produits et charges ', 'lien produit et charge', '', '14');
+INSERT INTO `taches` VALUES ('3', 'verifications des references pour eviter les doublons', 'references', '', '14');
+INSERT INTO `taches` VALUES ('5', 'corriger les calculs dans analyse', 'clacul ', '', '14');
+INSERT INTO `taches` VALUES ('6', 'faire les suppression dans magasin et intrant', 'suppression', '', '14');
+INSERT INTO `taches` VALUES ('7', 'faire la relation des categorie des charges avec analyse', 'categorie des charges', '', '14');
+INSERT INTO `taches` VALUES ('8', 'corriger le probleme de avance fournisseur de produit qui ne s\"affiche pa dans relevdes comptes', 'affichage dans relev des comptes', '', '14');
+INSERT INTO `taches` VALUES ('9', 'corriger la suppression entre l\"administrateur et l,utilisateur ', 'administrateur et utilisateur', '', '14');
+INSERT INTO `taches` VALUES ('10', 'faire les validations sur la date d\"encaissement ou  debours pour qu\"elle soit toujours superieur a la date de la commande ', 'validations des dates', '\0', '20');
+INSERT INTO `taches` VALUES ('11', 'corriger l\"etat d\"inventaire de produit', 'inventaire ', '', '14');
+INSERT INTO `taches` VALUES ('12', 'finir les validtions des chams obligatoires', 'validation des champs obligatoires', '', '14');
+INSERT INTO `taches` VALUES ('13', 'ajouter un compte compensation ', 'compte compensation', '', '15');
+INSERT INTO `taches` VALUES ('14', 'ajouter le total et la balance dans rapport ', 'total dans rapport', '', '14');
+INSERT INTO `taches` VALUES ('15', 'afficher les dettes dans l\"historique des paiements', 'affichier les dettes ', '\0', '15');
+INSERT INTO `taches` VALUES ('16', 'Shoebox enregistre une livraison de produits sans qu’un magasin soit indiqué. IL FAUT REFUSER LA TRANSACTION SI AUCUN MAGASIN N’EST CHOISI.', 'restriction dans la livraison s\'il n\'ya pas de magasin', '', '20');
+INSERT INTO `taches` VALUES ('17', 'Les soldes de ENCAISSE  et du Rapport Relevé de caisse ne balancent pas.', 'Verification des soldes', '', '20');
+INSERT INTO `taches` VALUES ('18', 'Plutôt que Folio il faudrait inscrire Description. dans Rapport', 'correction des libellées', '', '20');
+INSERT INTO `taches` VALUES ('19', 'Le total des comptes à recevoir n’est pas bon. ', 'correction du total des comptes', '', '20');
+INSERT INTO `taches` VALUES ('20', 'incapable de sélectionner le compte compensation dans encaissement des avances Client', 'probleme de selection du compte compensation', '', '20');
+INSERT INTO `taches` VALUES ('21', 'Il faut ajouter une nouvelle catégorie de charges : Sacherie. Il n’y a que le compte  6046 qui pourra être associé à cette catégorie', 'mettre èa jour les catégorie des charges', '', '20');
+INSERT INTO `taches` VALUES ('22', 'Le calcul de la variation des stocks dans l’état des charges est inversé :\r\n\r\nVariation des stocks = Stock au début – Stock à la fin', 'Ajuster le tableau des charges dans resultat', '', '20');
+INSERT INTO `taches` VALUES ('23', 'Correction des calculs dans analyse voir piece jointe ', 'correction de l\'analyse', '\0', '20');
+
+-- ----------------------------
+-- Table structure for `user`
+-- ----------------------------
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `nomPrenom` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of user
+-- ----------------------------
+INSERT INTO `user` VALUES ('1', 'GUIGA MEHDI', 'guim2708', 'taktouk');
+INSERT INTO `user` VALUES ('2', 'chahir fitouhi', 'chouchouFit', 'fitouhiC');
+INSERT INTO `user` VALUES ('3', 'Pierre Courtemanche', 'shoebox2010', 'socodevi');
+INSERT INTO `user` VALUES ('4', 'dardourti', 'marti', 'douda');
+
+-- ----------------------------
+-- Table structure for `version`
+-- ----------------------------
+DROP TABLE IF EXISTS `version`;
+CREATE TABLE `version` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `Description` varchar(255) DEFAULT NULL,
+  `chemin` varchar(255) DEFAULT NULL,
+  `dateVersion` date DEFAULT NULL,
+  `laVersion` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of version
+-- ----------------------------
+INSERT INTO `version` VALUES ('1', 'c\"est une version de test ', '/mySpace/versions/test-1.0.rar', '2010-09-06', 'test-1.0');
