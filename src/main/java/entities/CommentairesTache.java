@@ -15,6 +15,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -50,7 +51,8 @@ public class CommentairesTache implements Serializable {
     private BigInteger leUserid;
     @Column(name = "matache_id")
     private BigInteger matacheId;
-
+    @ManyToOne
+    private taches tache;
     public CommentairesTache() {
     }
 
@@ -121,6 +123,20 @@ public class CommentairesTache implements Serializable {
     @Override
     public String toString() {
         return "service.CommentairesTache[id=" + id + "]";
+    }
+
+    /**
+     * @return the tache
+     */
+    public taches getTache() {
+        return tache;
+    }
+
+    /**
+     * @param tache the tache to set
+     */
+    public void setTache(taches tache) {
+        this.tache = tache;
     }
     
 

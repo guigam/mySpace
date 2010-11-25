@@ -46,12 +46,9 @@ public class taches implements Serializable {
     private boolean etat;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date madate;
-    
-    public int nbCommentaire(int nbre){
-
-        return nbre;
-    }
-
+    @OneToMany(mappedBy="tache")
+    private List<CommentairesTache> comTache;
+  
     public Long getId() {
         return id;
     }
@@ -141,6 +138,20 @@ public class taches implements Serializable {
      */
     public void setMadate(Date madate) {
         this.madate = madate;
-    }  
+    }
+
+    /**
+     * @return the comTache
+     */
+    public List<CommentairesTache> getComTache() {
+        return comTache;
+    }
+
+    /**
+     * @param comTache the comTache to set
+     */
+    public void setComTache(List<CommentairesTache> comTache) {
+        this.comTache = comTache;
+    }
 
 }

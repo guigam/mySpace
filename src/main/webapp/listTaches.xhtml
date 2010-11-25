@@ -19,7 +19,7 @@
                         <h:outputText value="Liste des Tâches :  "  styleClass="title3" />
                        
                         
-                            <h:commandLink value="Nouvelle tâche" styleClass="title2" action="#{redirectController.redirect}" >
+                            <h:commandLink value="Nouvelle tâche" styleClass="title2" action="#{redirect.redirect}" >
 
                                 <f:param name="outcome" value="nvTache" />
                             </h:commandLink>
@@ -74,26 +74,24 @@
                                     <h:commandButton image="/icons/supp.png" id="d" action="#{gsTaches.supprimerUneTache}"/>
                                 <rich:toolTip value="supprimer" for="d"/>
                                 <rich:spacer width="5"/>
-                                <h:commandButton image="/icons/chat.png" style="width: 25px" id="c"  >
+                                <h:commandButton image="/icons/chat.png" style="width: 25px" id="c" action="#{gsTaches.commentaireTache}" >
                                      <rich:componentControl for="tach" attachTo="c" operation="show" event="onclick"/>
                                     </h:commandButton>
                                     <rich:toolTip value="commentaires" for="c"/>
                                 </h:panelGrid>
                                 </center>
                             </rich:column>
-                            
+
+        
+
                      </rich:dataTable>
 
-                </h:form>
-                <h:form>
 
+                         <rich:modalPanel id="tach" autosized="false" resizeable="true" style="width: 100%" >
 
-
-                    <rich:modalPanel id="tach" autosized="false" resizeable="true" style="width: 100%" >
-                        
                             <rich:panel style="width: 100%">
                                 <h:commandLink value="ferme"/>
-                                <rich:dataTable value="#{commenttache.lesCommentaires}" var="c" width="100%" >
+                                <rich:dataTable value="#{gsTaches.comTach}" var="c" width="100%" >
                                     <rich:column>
                                         <f:facet name="header">
                                             <h:outputText value="date"/>
@@ -118,9 +116,12 @@
                             </rich:panel>
 
                             <h:commandLink value="Ajoueter un commentaire" />
-                        
+
                     </rich:modalPanel>
+
+
                 </h:form>
+          
                 </rich:panel>
             
             </ui:define>

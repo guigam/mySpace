@@ -11,9 +11,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -30,6 +27,7 @@ public class gestionTache {
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("manager");
     private EntityManager em = emf.createEntityManager();
     private List<taches> mesTaches = new LinkedList<taches>();
+    private List<CommentairesTache> comTach = new LinkedList<CommentairesTache>();
     private taches matache = new taches();
     private String type = null;
   //  private developpement deev =  ((gestionDEv) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("dev")).getMonDev();
@@ -107,7 +105,12 @@ public class gestionTache {
         
         return mesTaches;
     }
-
+    public List<CommentairesTache> getcommentaireTache(){
+        if (dataTable.getRowData() != null)
+        matache = (taches) dataTable.getRowData();
+       comTach =  new GestionCommentTache().listDesCommentaires(matache);
+       return comTach;
+    }
 
     /**
      * @return the em
@@ -198,6 +201,20 @@ public class gestionTache {
 
     private void setType(ValueChangeEvent e, String type) {
         throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    /**
+     * @return the comTach
+     */
+    public List<CommentairesTache> getComTach() {
+        return comTach;
+    }
+
+    /**
+     * @param comTach the comTach to set
+     */
+    public void setComTach(List<CommentairesTache> comTach) {
+        this.comTach = comTach;
     }
 
    

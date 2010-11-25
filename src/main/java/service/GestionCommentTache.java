@@ -44,11 +44,11 @@ public class GestionCommentTache {
 
     
 
-    public void  listDesCommentaires(taches tache){
+    public List<CommentairesTache>  listDesCommentaires(taches tache){
     Query query = em.createQuery("select c from commentaires c where  c.matacheId = ?1");
         query.setParameter(1, tache);
         lesCommentaires =  query.getResultList();
-        
+        return lesCommentaires;
     }
 
 
