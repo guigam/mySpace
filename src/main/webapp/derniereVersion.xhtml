@@ -34,15 +34,19 @@
                       <h:outputText value="#{gestionVersion.laversion.informations}" style="width: 50%"/>
                  </h:panelGrid>
                  </rich:panel>
+                	<h:panelGrid width="100%">
                    <a href="#{gestionVersion.laversion.chemin}">telecharger la derniere version</a>
-                     
-                
+                    <rich:spacer height="10px" />
+                     <rich:separator width="100%" height="2" />
+                   <h:outputText value="Telecharger code source "  styleClass="title2" />
+			<a href="/mySpace/versions/socodevi.rar">Download</a>
+                </h:panelGrid>
                      <center><h:graphicImage value="/images/SHOEBOX.gif" width="150px"/></center>
 
-                  
+                   
                </h:form>
                 </rich:panel>
-
+			
             </ui:define>
 
         </ui:composition>
